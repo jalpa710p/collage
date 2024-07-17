@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+     <h2 align="center"> Table</h2>
+<!--    {% load static %}-->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fullname</th>
+                <th>Email</th>
+                <th>Phone_number</th>
+                <th>Birthdate</th>
+                <th>Gender</th>
+                <th>High_school</th>
+                <th>Essay</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i in data %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.Fullname}}</td>
+                <td>{{i.Email}}</td>
+                <td>{{i.Phone_number}}</td>
+                <td>{{i.Birthdate}}</td>
+                <td>{{i.Gender}}</td>
+                <td>{{i.High_school}}</td>
+                <td>{{i.Essay}}</td>
+                <td><img src="/media/{{i.img}}" alt="Not Found" width="300" height="200"></td>
+                <td>
+                    <a href="{% url 'edit' id=i.id%}"> <button>Edit</button></a>
+                    <a href="{% url 'delete' id=i.id%}"> <button>Delete</button></a>
+                </td>
+
+            </tr>
+        {% endfor %}
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</body>
+</html>
